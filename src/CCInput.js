@@ -70,12 +70,13 @@ export default class CCInput extends Component {
     const { label, value, placeholder, status, keyboardType,
             containerStyle, inputStyle, labelStyle,
             validColor, invalidColor, placeholderColor,
-            additionalInputProps } = this.props;
+            additionalInputProps,extraText,extraTextStyle } = this.props;
     return (
       <TouchableOpacity onPress={this.focus}
         activeOpacity={0.99}>
         <View style={[containerStyle]}>
           { !!label && <Text style={[labelStyle]}>{label}</Text>}
+          <View style={{flexDirection:'row', alignItems:'center'}} >
           <TextInput ref="input"
             {...additionalInputProps}
             keyboardType={keyboardType}
@@ -94,6 +95,9 @@ export default class CCInput extends Component {
             value={value}
             onFocus={this._onFocus}
             onChangeText={this._onChange} />
+            <Text style={[{flex:1, fontSize: 9, marginLeft: 12}, extraTextStyle]} >{extraText}</Text>
+
+            </View>
         </View>
       </TouchableOpacity>
     );
